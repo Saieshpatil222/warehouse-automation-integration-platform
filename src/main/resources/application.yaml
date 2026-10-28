@@ -1,3 +1,33 @@
 spring:
   application:
     name: warehouse-automation-integration-platform
+  datasource:
+    url: jdbc:postgresql://localhost:5432/waip
+    username: waip
+    password: waip_local_dev
+    driver-class-name: org.postgresql.Driver
+
+    jpa:
+      hibernate:
+        ddl-auto: validate
+      open-in-view: false
+
+    flyway:
+      enabled: true
+
+  server:
+    port: 8081
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: health,info
+    endpoint:
+      health:
+        show-details: never
+
+  info:
+    app:
+      name: Warehouse Control System
+      description: Warehouse task orchestration service
